@@ -1,27 +1,25 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    margin: 0;
 }
 
+/* Contenedor principal de la calculadora */
 .container {
-    background-color: white;
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
     text-align: center;
+    width: 300px;
 }
 
-h1 {
-    margin-bottom: 20px;
-}
-
+/* Estilos del display */
 #display {
     width: 100%;
     height: 50px;
@@ -29,30 +27,84 @@ h1 {
     text-align: right;
     margin-bottom: 10px;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
+    outline: none;
+    background-color: #f9f9f9;
 }
 
+/* Estilos de la cuadrícula de botones */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
+/* Estilos de los botones */
 button {
-    padding: 20px;
+    padding: 15px;
     font-size: 18px;
     border: none;
     border-radius: 5px;
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
 }
 
+/* Efecto de hover y active */
 button:hover {
     background-color: #0056b3;
 }
 
 button:active {
-    background-color: #004085;
+    transform: scale(0.95);
+}
+
+/* Estilos especiales para el botón de limpiar */
+button:nth-child(16) {
+    background-color: #dc3545;
+}
+
+button:nth-child(16):hover {
+    background-color: #c82333;
+}
+
+/* Estilos del historial */
+.historial {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.historial h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+#historial-lista {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Estilos de cada ítem en el historial */
+#historial-lista li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+#historial-lista li:last-child {
+    border-bottom: none;
+}
+
+/* Estilos responsivos para móviles */
+@media (max-width: 400px) {
+    .container {
+        width: 90%;
+    }
 }
