@@ -17,7 +17,12 @@ function agregarValor(valor) {
 function calcularResultado(){
     const display = document.getElementById('display');
     try{
-        const resultado = eval(display.value);
+        const expresion = display.value;
+        const resultado = eval(expresion);
+        
+        historial.push(`${expresion} = ${resultado}`);
+        actualizarHistorial();
+
         display.value = resultado;
     }catch(error){
         display.value = 'Error';
