@@ -1,3 +1,5 @@
+let historial = [];
+
 function agregarValor(valor) {
     const display = document.getElementById('display');
     // Limpiar el campo si contiene un mensaje de error
@@ -25,4 +27,15 @@ function calcularResultado(){
 function borrar(){
     const display = document.getElementById('display');
     display.value = '';
+}
+
+function actualizarHistorial(){
+    const historialLista = document.getElementById('historial-lista');
+    historialLista.innerHTML = "";
+
+    historial.forEach(calculo => {
+        const li = document.createElement("li");
+        li.innerText = calculo;
+        historialLista.appendChild(li);
+    });
 }
