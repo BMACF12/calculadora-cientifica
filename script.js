@@ -1,4 +1,5 @@
 let historial = [];
+let resultadoMostrado = false;
 
 // Alternar menú lateral
 function toggleMenu() {
@@ -16,8 +17,6 @@ document.addEventListener('click', function (event) {
     }
 });
 
-
-
 // Alternar la visibilidad del historial
 function toggleHistorial() {
     const historialContainer = document.getElementById('historial-container');
@@ -27,6 +26,12 @@ function toggleHistorial() {
 // Agregar valores al display
 function agregarValor(valor) {
     const display = document.getElementById('display');
+
+    if (resultadoMostrado && !isNaN(valor)) {
+        display.value = '';
+        resultadoMostrado = false;
+    }
+
     if (["Error", "undefined"].includes(display.value)) {
         display.value = '';   
         if (["+","-","*","/"].includes(valor)) {
@@ -47,8 +52,10 @@ function calcularResultado() {
         actualizarHistorial();
 
         display.value = resultado;
+        resultadoMostrado = true;
     } catch (error) {
         display.value = 'Error';
+        resultadoMostrado = true;
     }
 }
 
