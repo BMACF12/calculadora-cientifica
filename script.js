@@ -6,6 +6,18 @@ function toggleMenu() {
     menu.classList.toggle('active');
 }
 
+//Cerrar el menu si hacemos click fuera de él
+document.addEventListener('click', function (event) {
+    const menu = document.getElementById('menu-lateral');
+    const botonMenu = document.querySelector('.menu-btn');
+
+    if(!menu.contains(event.target) && !botonMenu.contains(EventSource.target)) {
+        menu.classList.remove('active');
+    }
+});
+
+
+
 // Alternar la visibilidad del historial
 function toggleHistorial() {
     const historialContainer = document.getElementById('historial-container');
