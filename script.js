@@ -1,40 +1,52 @@
 let historial = [];
 
+// Alternar menú lateral
+function toggleMenu() {
+    const menu = document.getElementById('menu-lateral');
+    menu.classList.toggle('active');
+}
+
+// Alternar la visibilidad del historial
+function toggleHistorial() {
+    const historialContainer = document.getElementById('historial-container');
+    historialContainer.style.display = historialContainer.style.display === 'none' ? 'block' : 'none';
+}
+
+// Agregar valores al display
 function agregarValor(valor) {
     const display = document.getElementById('display');
-    // Limpiar el campo si contiene un mensaje de error
     if (["Error", "undefined"].includes(display.value)) {
         display.value = '';   
-        // Evitar agregar operadores inmediatamente después de limpiar el campo
         if (["+","-","*","/"].includes(valor)) {
-            return; // No hacer nada si el valor es un operador
+            return;
         }
     }
-    // Agregar el nuevo valor al campo
     display.value += valor;
 }
 
-function calcularResultado(){
+// Calcular resultado y agregarlo al historial
+function calcularResultado() {
     const display = document.getElementById('display');
-    try{
+    try {
         const expresion = display.value;
         const resultado = eval(expresion);
-        
+
         historial.push(`${expresion} = ${resultado}`);
         actualizarHistorial();
 
         display.value = resultado;
-    }catch(error){
+    } catch (error) {
         display.value = 'Error';
     }
 }
 
-function borrar(){
-    const display = document.getElementById('display');
-    display.value = '';
+// Limpiar el display
+function borrar() {
+    document.getElementById('display').value = '';
 }
 
-function actualizarHistorial(){
+// Actualizar historial en la interfaz
+function actualizarHistorial() {
     const historialLista = document.getElementById('historial-lista');
     historialLista.innerHTML = "";
 
