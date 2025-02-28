@@ -11,7 +11,7 @@ document.addEventListener('click', function (event) {
     const menu = document.getElementById('menu-lateral');
     const botonMenu = document.querySelector('.menu-btn');
 
-    if(!menu.contains(event.target) && !botonMenu.contains(EventSource.target)) {
+    if(!menu.contains(event.target) && !botonMenu.contains(event.target)) {
         menu.classList.remove('active');
     }
 });
