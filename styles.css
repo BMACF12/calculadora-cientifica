@@ -17,6 +17,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 300px;
+    position: relative; /* Para que el botón de menú se posicione dentro */
 }
 
 /* Estilos del display */
@@ -70,85 +71,11 @@ button:nth-child(16):hover {
     background-color: #c82333;
 }
 
-/* Estilos del historial */
-.historial {
-    margin-top: 20px;
-    text-align: left;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    width: 100%;
-}
-
-.historial h2 {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-#historial-container {
-    max-height: calc(85% - 80px); /* Ajusta la altura al resto del menú */
-    overflow-y: auto; /* Agregar scroll si es necesario */
-    padding: 10px;
-}
-
-#historial-lista {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    scrollbar-width: none;
-}
-
-#historial-lista::-webkit-scrollbar {
-    display: none; /* Para Chrome, Safari y Edge */
-}
-
-/* Estilos de cada ítem en el historial */
-#historial-lista li {
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    font-size: 16px;
-    color: #fff;
-    text-align: left;
-}
-
-#historial-lista li:last-child {
-    border-bottom: none;
-}
-
-/* Estilos responsivos para móviles */
-@media (max-width: 400px) {
-    .container {
-        width: 90%;
-    }
-}
-
-/* Estilos del botón dentro del menú */
-.menu-lateral button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.menu-lateral button:hover {
-    background: #0056b3;
-}
-
 /* Estilos del menú lateral */
 .menu-lateral {
     position: fixed;
     top: 0;
-    right: -300px; /* Empieza oculto */
+    right: -300px; /* Oculto por defecto */
     width: 250px;
     height: 100%;
     background: #333;
@@ -156,14 +83,15 @@ button:nth-child(16):hover {
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     transition: right 0.3s ease-in-out;
-    z-index: 1000; /* Para que quede encima de la calculadora */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Mostrar el menú cuando está activo */
 .menu-lateral.active {
     right: 0;
 }
-
 
 /* Botón de menú dentro de la calculadora */
 .menu-btn {
@@ -185,13 +113,61 @@ button:nth-child(16):hover {
     background: rgba(0, 0, 0, 0.1);
 }
 
-/* Asegurar que la calculadora tenga posición relativa */
-.container {
-    position: relative; /* Para que el botón de menú se posicione dentro */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 300px;
+/* Estilos del botón dentro del menú */
+.menu-lateral button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-lateral button:hover {
+    background: #0056b3;
+}
+
+/* Estilos del historial */
+#historial-container {
+    max-height: calc(85% - 80px); /* Ajusta la altura al 85% del menú */
+    overflow-y: auto; /* Permite scroll interno */
+    padding: 10px;
+}
+
+/* Estilos de la lista del historial */
+#historial-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    scrollbar-width: none; /* Oculta scrollbar en Firefox */
+    -ms-overflow-style: none; /* Oculta scrollbar en IE y Edge */
+}
+
+/* Ocultar scrollbar en Chrome, Safari y Edge */
+#historial-container::-webkit-scrollbar,
+#historial-lista::-webkit-scrollbar {
+    width: 0px;
+    display: none;
+}
+
+/* Estilos de cada ítem en el historial */
+#historial-lista li {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    text-align: left;
+}
+
+/* Estilos responsivos para móviles */
+@media (max-width: 400px) {
+    .container {
+        width: 90%;
+    }
 }
