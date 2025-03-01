@@ -48,8 +48,11 @@ function calcularResultado() {
         const expresion = display.value;
         const resultado = eval(expresion);
 
-        historial.push(`${expresion} = ${resultado}`);
-        actualizarHistorial();
+        // Verificar si el último cálculo guardado es igual al nuevo
+        if (historial.length === 0 || historial[historial.length - 1] !== `${expresion} = ${resultado}`) {
+            historial.push(`${expresion} = ${resultado}`);
+            actualizarHistorial();
+        }
 
         display.value = resultado;
         resultadoMostrado = true;
