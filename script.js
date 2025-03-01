@@ -74,4 +74,6 @@ function actualizarHistorial() {
         li.innerText = calculo;
         historialLista.appendChild(li);
     });
+
+    historialLista.scrollTop = historialLista.scrollHeight;
 }

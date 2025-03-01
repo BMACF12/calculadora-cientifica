@@ -88,7 +88,7 @@ button:nth-child(16):hover {
 }
 
 #historial-container {
-    max-height: calc(100% - 80px); /* Ajusta la altura al resto del menú */
+    max-height: calc(85% - 80px); /* Ajusta la altura al resto del menú */
     overflow-y: auto; /* Agregar scroll si es necesario */
     padding: 10px;
 }
@@ -100,6 +100,11 @@ button:nth-child(16):hover {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    scrollbar-width: none;
+}
+
+#historial-lista::-webkit-scrollbar {
+    display: none; /* Para Chrome, Safari y Edge */
 }
 
 /* Estilos de cada ítem en el historial */
@@ -109,7 +114,6 @@ button:nth-child(16):hover {
     border-radius: 5px;
     font-size: 16px;
     color: #fff;
-    border-bottom: none;
     text-align: left;
 }
 
