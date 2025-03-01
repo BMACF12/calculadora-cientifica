@@ -171,3 +171,26 @@ button:nth-child(16):hover {
         width: 90%;
     }
 }
+
+/* Estilos de la sección científica */
+.cientifica {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cientifica button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cientifica button:hover {
+    background-color: #218838;
+}

@@ -80,3 +80,34 @@ function actualizarHistorial() {
 
     historialLista.scrollTop = historialLista.scrollHeight;
 }
+
+// Alternar Modo Científico
+function toggleModoCientifico() {
+    const cientificaContainer = document.getElementById('cientifica-container');
+    cientificaContainer.style.display = cientificaContainer.style.display === 'none' ? 'grid' : 'none';
+}
+
+// Agregar funciones matemáticas científicas
+function agregarFuncion(func) {
+    const display = document.getElementById('display');
+    let valor = parseFloat(display.value);
+
+    if (isNaN(valor)) return;
+
+    let resultado;
+    switch (func) {
+        case 'sin': resultado = Math.sin(valor * Math.PI / 180); break;
+        case 'cos': resultado = Math.cos(valor * Math.PI / 180); break;
+        case 'tan': resultado = Math.tan(valor * Math.PI / 180); break;
+        case 'log': resultado = Math.log10(valor); break;
+        case 'ln': resultado = Math.log(valor); break;
+        case 'sqrt': resultado = Math.sqrt(valor); break;
+        case 'exp': resultado = Math.exp(valor); break;
+        case 'pi': resultado = Math.PI; break;
+        case 'pow': resultado = Math.pow(valor, 2); break;
+        case 'inv': resultado = 1 / valor; break;
+        default: return;
+    }
+
+    display.value = resultado;
+}

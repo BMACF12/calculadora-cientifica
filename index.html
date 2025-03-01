@@ -37,11 +37,25 @@
         </div>    
     </div>
     
+    <div class="cientifica" id="cientifica-container" style="display: none;">
+        <button onclick="agregarFuncion('sin')">sin</button>
+        <button onclick="agregarFuncion('cos')">cos</button>
+        <button onclick="agregarFuncion('tan')">tan</button>
+        <button onclick="agregarFuncion('log')">log</button>
+        <button onclick="agregarFuncion('ln')">ln</button>
+        <button onclick="agregarFuncion('sqrt')">√</button>
+        <button onclick="agregarFuncion('exp')">e^x</button>
+        <button onclick="agregarFuncion('pi')">π</button>
+        <button onclick="agregarFuncion('pow')">x^y</button>
+        <button onclick="agregarFuncion('inv')">1/x</button>
+    </div>    
 
     <!-- Menú lateral desplegable -->
     <div id="menu-lateral" class="menu-lateral">
         <h2>Funciones Extras</h2>
         <button onclick="toggleHistorial()">📜 Ver Historial</button>
+        <button onclick="toggleModoCientifico()">🧪 Modo Científico</button>
+        
         <div id="historial-container" style="display: none;">
             <h3>Historial</h3>
             <ul id="historial-lista"></ul>
