@@ -48,8 +48,8 @@
             <button onclick="agregarFuncion('pi')">π</button>
             <button onclick="agregarFuncion('pow')">x^y</button>
             <button onclick="agregarFuncion('inv')">1/x</button>
-            <button onclick="cambiarSigno()">±</button>
-            <button onclick="limpiarHistorial()">🗑️</button>
+            <button onclick="agregarValor('.')">.</button>
+            <button onclick="retroceder()">⌫</button>
         </div>    
     </div>
     
@@ -60,7 +60,8 @@
         <h2>Funciones Extras</h2>
         <button onclick="toggleHistorial()">📜 Ver Historial</button>
         <button onclick="toggleModoCientifico()">🧪 Modo Científico</button>
-        
+        <button onclick="limpiarHistorial()">🗑️ Borrar Historial</button>
+
         <div id="historial-container" style="display: none;">
             <h3>Historial</h3>
             <ul id="historial-lista"></ul>

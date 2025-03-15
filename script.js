@@ -112,15 +112,12 @@ function agregarFuncion(func) {
     display.value = resultado;
 }
 
-function cambiarSigno() {
-    const display = document.getElementById('display');
-    let valor = parseFloat(display.value);
-    if (!isNaN(valor)) {
-        display.value = valor * -1;
-    }
-}
-
 function limpiarHistorial() {
     historial = [];
     actualizarHistorial();
+}
+
+function retroceder() {
+    const display = document.getElementById('display');
+    display.value = display.value.slice(0, -1);
 }
