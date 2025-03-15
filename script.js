@@ -175,3 +175,17 @@ function retroceder() {
 function toggleTema() {
     document.body.classList.toggle('tema-oscuro');
 }
+
+function copiarResultado() {
+    const display = document.getElementById('display');
+    const valor = display.value;
+
+    if (valor !== '') {
+        navigator.clipboard.writeText(valor).then(() => {
+            const boton = document.getElementById('copiar-btn');
+            const original = boton.textContent;
+            boton.textContent = '✅';
+            setTimeout(() => boton.textContent = original, 1500);
+        });
+    }
+}

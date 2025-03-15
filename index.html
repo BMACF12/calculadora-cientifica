@@ -12,7 +12,10 @@
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
     
         <h1>Calculadora</h1>
-        <input type="text" id="display" placeholder="0" readonly>
+        <div class="display-container">
+            <input type="text" id="display" placeholder="0" readonly>
+            <button id="copiar-btn" onclick="copiarResultado()" title="Copiar">📋</button>
+        </div>
     
         <div class="buttons">
             <button onclick="agregarValor('1')">1</button>
