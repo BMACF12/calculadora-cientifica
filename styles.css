@@ -178,8 +178,8 @@ button:nth-child(16):hover {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    margin-top: 10px;
-    width: 100%; 
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .cientifica button {
