@@ -47,10 +47,17 @@ function agregarValor(valor) {
 // Calcular resultado y agregarlo al historial
 function calcularResultado() {
     const display = document.getElementById('display');
-    let expresion = display.value;
+    let expresion = display.value.trim();
+
+    // ✅ Evitar evaluación si ya hay "Error"
+    if (expresion === "Error" || expresion === "undefined") {
+        display.value = '';
+        resultadoMostrado = false;
+        return;
+    }
 
     try {
-        // Reemplazos personalizados
+        // 🧠 Reemplazos para funciones matemáticas
         expresion = expresion.replace(/π/g, 'Math.PI');
         expresion = expresion.replace(/sin\(/g, 'Math.sin((Math.PI/180)*');
         expresion = expresion.replace(/cos\(/g, 'Math.cos((Math.PI/180)*');
@@ -61,13 +68,11 @@ function calcularResultado() {
         expresion = expresion.replace(/exp\(/g, 'Math.exp(');
         expresion = expresion.replace(/\^/g, '**');
 
-        // ✨ Cierre automático de paréntesis si faltan
-        const numParentesisApertura = (expresion.match(/\(/g) || []).length;
-        const numParentesisCierre = (expresion.match(/\)/g) || []).length;
-        const diferencia = numParentesisApertura - numParentesisCierre;
-
-        if (diferencia > 0) {
-            expresion += ')'.repeat(diferencia);
+        // Cierre automático de paréntesis
+        const numOpen = (expresion.match(/\(/g) || []).length;
+        const numClose = (expresion.match(/\)/g) || []).length;
+        if (numOpen > numClose) {
+            expresion += ')'.repeat(numOpen - numClose);
         }
 
         const resultado = eval(expresion);
@@ -79,11 +84,13 @@ function calcularResultado() {
 
         display.value = resultado;
         resultadoMostrado = true;
+
     } catch (error) {
         display.value = 'Error';
         resultadoMostrado = true;
     }
 }
+
 
 // Limpiar el display
 function borrar() {
