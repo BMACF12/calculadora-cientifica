@@ -175,23 +175,27 @@ button:nth-child(16):hover {
 /* Estilos de la sección científica */
 .cientifica {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin-top: 10px;
-    width: 100%; /* <- Asegura que ocupe el mismo ancho que la calculadora */
+    width: 100%; 
 }
 
 .cientifica button {
-    padding: 10px;
-    font-size: 16px;
+    padding: 15px;
+    font-size: 18px;
     border: none;
     border-radius: 5px;
-    background-color: #28a745;
+    background-color: #0069d9;
     color: white;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.1s;
 }
 
 .cientifica button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
+}
+
+.cientifica button:active {
+    transform: scale(0.95);
 }
