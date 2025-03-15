@@ -149,8 +149,28 @@ function limpiarHistorial() {
 
 function retroceder() {
     const display = document.getElementById('display');
-    display.value = display.value.slice(0, -1);
+    let valor = display.value;
+
+    // Borrar todo si se acaba de mostrar un resultado
+    if (resultadoMostrado) {
+        display.value = '';
+        resultadoMostrado = false;
+        return;
+    }
+
+    // Detectar funciones como sin(, cos(, log(, etc. y borrarlas completas
+    const funciones = ['sin(', 'cos(', 'tan(', 'log(', 'ln(', 'sqrt(', 'exp('];
+    for (let func of funciones) {
+        if (valor.endsWith(func)) {
+            display.value = valor.slice(0, -func.length);
+            return;
+        }
+    }
+
+    // Borrar un solo carácter como antes
+    display.value = valor.slice(0, -1);
 }
+
 
 function toggleTema() {
     document.body.classList.toggle('tema-oscuro');
