@@ -111,3 +111,16 @@ function agregarFuncion(func) {
 
     display.value = resultado;
 }
+
+function cambiarSigno() {
+    const display = document.getElementById('display');
+    let valor = parseFloat(display.value);
+    if (!isNaN(valor)) {
+        display.value = valor * -1;
+    }
+}
+
+function limpiarHistorial() {
+    historial = [];
+    actualizarHistorial();
+}
