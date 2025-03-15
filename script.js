@@ -44,13 +44,33 @@ function agregarValor(valor) {
 // Calcular resultado y agregarlo al historial
 function calcularResultado() {
     const display = document.getElementById('display');
+    let expresion = display.value;
+
     try {
-        const expresion = display.value;
+        // Reemplazos personalizados
+        expresion = expresion.replace(/π/g, 'Math.PI');
+        expresion = expresion.replace(/sin\(/g, 'Math.sin((Math.PI/180)*');
+        expresion = expresion.replace(/cos\(/g, 'Math.cos((Math.PI/180)*');
+        expresion = expresion.replace(/tan\(/g, 'Math.tan((Math.PI/180)*');
+        expresion = expresion.replace(/log\(/g, 'Math.log10(');
+        expresion = expresion.replace(/ln\(/g, 'Math.log(');
+        expresion = expresion.replace(/sqrt\(/g, 'Math.sqrt(');
+        expresion = expresion.replace(/exp\(/g, 'Math.exp(');
+        expresion = expresion.replace(/\^/g, '**');
+
+        // ✨ Cierre automático de paréntesis si faltan
+        const numParentesisApertura = (expresion.match(/\(/g) || []).length;
+        const numParentesisCierre = (expresion.match(/\)/g) || []).length;
+        const diferencia = numParentesisApertura - numParentesisCierre;
+
+        if (diferencia > 0) {
+            expresion += ')'.repeat(diferencia);
+        }
+
         const resultado = eval(expresion);
 
-        // Verificar si el último cálculo guardado es igual al nuevo
-        if (historial.length === 0 || historial[historial.length - 1] !== `${expresion} = ${resultado}`) {
-            historial.push(`${expresion} = ${resultado}`);
+        if (historial.length === 0 || historial[historial.length - 1] !== `${display.value} = ${resultado}`) {
+            historial.push(`${display.value} = ${resultado}`);
             actualizarHistorial();
         }
 
@@ -90,27 +110,25 @@ function toggleModoCientifico() {
 // Agregar funciones matemáticas científicas
 function agregarFuncion(func) {
     const display = document.getElementById('display');
-    let valor = parseFloat(display.value);
+    let funcionFormateada = '';
 
-    if (isNaN(valor)) return;
-
-    let resultado;
     switch (func) {
-        case 'sin': resultado = Math.sin(valor * Math.PI / 180); break;
-        case 'cos': resultado = Math.cos(valor * Math.PI / 180); break;
-        case 'tan': resultado = Math.tan(valor * Math.PI / 180); break;
-        case 'log': resultado = Math.log10(valor); break;
-        case 'ln': resultado = Math.log(valor); break;
-        case 'sqrt': resultado = Math.sqrt(valor); break;
-        case 'exp': resultado = Math.exp(valor); break;
-        case 'pi': resultado = Math.PI; break;
-        case 'pow': resultado = Math.pow(valor, 2); break;
-        case 'inv': resultado = 1 / valor; break;
+        case 'sin': funcionFormateada = 'sin('; break;
+        case 'cos': funcionFormateada = 'cos('; break;
+        case 'tan': funcionFormateada = 'tan('; break;
+        case 'log': funcionFormateada = 'log('; break;
+        case 'ln':  funcionFormateada = 'ln('; break;
+        case 'sqrt': funcionFormateada = 'sqrt('; break;
+        case 'exp': funcionFormateada = 'exp('; break;
+        case 'pi': display.value += 'π'; return; // este no necesita paréntesis
+        case 'pow': funcionFormateada = '^'; break;
+        case 'inv': funcionFormateada = '1/'; break;
         default: return;
     }
 
-    display.value = resultado;
+    display.value += funcionFormateada;
 }
+
 
 function limpiarHistorial() {
     historial = [];
