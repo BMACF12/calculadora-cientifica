@@ -183,8 +183,6 @@ function copiarResultado() {
     if (valor !== '') {
         navigator.clipboard.writeText(valor).then(() => {
             const boton = document.getElementById('copiar-btn');
-            const original = boton.textContent;
-            boton.textContent = '✅';
             setTimeout(() => boton.textContent = original, 1500);
         });
     }

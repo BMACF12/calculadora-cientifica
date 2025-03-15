@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="container">
@@ -13,9 +14,11 @@
     
         <h1>Calculadora</h1>
         <div class="display-container">
+            <button id="copiar-btn" onclick="copiarResultado()" title="Copiar resultado">
+                <i class="fas fa-copy"></i>
+            </button>            
             <input type="text" id="display" placeholder="0" readonly>
-            <button id="copiar-btn" onclick="copiarResultado()" title="Copiar">📋</button>
-        </div>
+        </div>        
     
         <div class="buttons">
             <button onclick="agregarValor('1')">1</button>
