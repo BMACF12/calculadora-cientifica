@@ -27,17 +27,20 @@ function toggleHistorial() {
 function agregarValor(valor) {
     const display = document.getElementById('display');
 
-    if (resultadoMostrado && !isNaN(valor)) {
-        display.value = '';
+    if (resultadoMostrado) {
+        if (!isNaN(valor) || valor === '.') {
+            display.value = '';
+        }
         resultadoMostrado = false;
     }
 
     if (["Error", "undefined"].includes(display.value)) {
-        display.value = '';   
-        if (["+","-","*","/"].includes(valor)) {
+        display.value = '';
+        if (["+", "-", "*", "/"].includes(valor)) {
             return;
         }
     }
+
     display.value += valor;
 }
 
@@ -110,6 +113,15 @@ function toggleModoCientifico() {
 // Agregar funciones matemáticas científicas
 function agregarFuncion(func) {
     const display = document.getElementById('display');
+    let valorActual = display.value.trim();
+    let ultimoChar = valorActual.slice(-1);
+
+    // Si el último carácter es un número o una letra (como otra función), reemplazar todo
+    if (/\d|\)|[a-z]$/i.test(ultimoChar) || resultadoMostrado) {
+        display.value = '';
+        resultadoMostrado = false;
+    }
+
     let funcionFormateada = '';
 
     switch (func) {
@@ -120,7 +132,7 @@ function agregarFuncion(func) {
         case 'ln':  funcionFormateada = 'ln('; break;
         case 'sqrt': funcionFormateada = 'sqrt('; break;
         case 'exp': funcionFormateada = 'exp('; break;
-        case 'pi': display.value += 'π'; return; // este no necesita paréntesis
+        case 'pi': display.value += 'π'; return;
         case 'pow': funcionFormateada = '^'; break;
         case 'inv': funcionFormateada = '1/'; break;
         default: return;
