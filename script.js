@@ -49,7 +49,6 @@ function calcularResultado() {
     const display = document.getElementById('display');
     let expresion = display.value.trim();
 
-    // ✅ Evitar evaluación si ya hay "Error"
     if (expresion === "Error" || expresion === "undefined") {
         display.value = '';
         resultadoMostrado = false;
@@ -57,7 +56,6 @@ function calcularResultado() {
     }
 
     try {
-        // 🧠 Reemplazos para funciones matemáticas
         expresion = expresion.replace(/π/g, 'Math.PI');
         expresion = expresion.replace(/sin\(/g, 'Math.sin((Math.PI/180)*');
         expresion = expresion.replace(/cos\(/g, 'Math.cos((Math.PI/180)*');
@@ -123,7 +121,6 @@ function agregarFuncion(func) {
     let valorActual = display.value.trim();
     let ultimoChar = valorActual.slice(-1);
 
-    // Si el último carácter es un número o una letra (como otra función), reemplazar todo
     if (/\d|\)|[a-z]$/i.test(ultimoChar) || resultadoMostrado) {
         display.value = '';
         resultadoMostrado = false;

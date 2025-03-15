@@ -19,7 +19,7 @@
             </button>            
             <input type="text" id="display" placeholder="0" readonly>
         </div>        
-    
+        <!-- Botones de la calculadora cientifica -->
         <div class="cientifica" id="cientifica-container" style="display: none;">
             <button onclick="agregarFuncion('sin')">sin</button>
             <button onclick="agregarFuncion('cos')">cos</button>
@@ -34,7 +34,7 @@
             <button onclick="agregarValor('.')">.</button>
             <button onclick="retroceder()">⌫</button>
         </div>   
-        
+        <!-- Botones de la calculadora normal -->
         <div class="buttons">
             <button onclick="agregarValor('1')">1</button>
             <button onclick="agregarValor('2')">2</button>
@@ -59,10 +59,8 @@
               
         </div> 
     </div>
-    
-    
 
-    <!-- Menú lateral desplegable -->
+    <!-- Menú lateral -->
     <div id="menu-lateral" class="menu-lateral">
         <h2>Funciones Extras</h2>
         <button onclick="toggleHistorial()"><i class="fas fa-scroll"></i> Ver Historial</button>
